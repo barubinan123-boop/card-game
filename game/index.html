@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Court — Duel of the Four Suits</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="scoreboard">
+    <div class="side you">
+      <span class="side-name">You</span>
+      <span class="life" id="you-life">30</span>
+      <span class="life-label">life</span>
+      <span class="tricks" id="you-tricks">0 tricks</span>
+    </div>
+    <div class="middle">
+      <div id="round-label">Round 1</div>
+      <div id="deck-count">Deck 26</div>
+    </div>
+    <div class="side foe">
+      <span class="tricks" id="foe-tricks">0 tricks</span>
+      <span class="life-label">life</span>
+      <span class="life" id="foe-life">30</span>
+      <span class="side-name">Rook</span>
+    </div>
+  </header>
+
+  <main id="table">
+    <section id="foe-area">
+      <div class="area-label">Rook's hand <span id="foe-hand-count"></span></div>
+      <div id="foe-hand" class="hand foe-hand"></div>
+    </section>
+
+    <section id="arena">
+      <div id="foe-played" class="played-slot"></div>
+      <div id="arena-center">
+        <div id="versus">VS</div>
+        <div id="round-result"></div>
+        <button id="play-button" type="button">Play card</button>
+        <button id="forfeit-button" type="button">Forfeit</button>
+      </div>
+      <div id="you-played" class="played-slot"></div>
+    </section>
+
+    <section id="you-area">
+      <div class="area-label">Your hand — click a card or press 1–5, then Enter</div>
+      <div id="you-hand" class="hand you-hand"></div>
+    </section>
+  </main>
+
+  <footer id="logbar">
+    <div id="gamelog">Welcome to Ember Court.</div>
+    <div id="hintbar">Keys: 1–5 select · Enter play · N new game · M mute · H help</div>
+  </footer>
+
+  <div id="title-screen" class="overlay">
+    <div class="panel">
+      <h1>Ember Court</h1>
+      <p class="tagline">Duel of the Four Suits</p>
+      <p class="story">The fox Rook has challenged you to the Ember Court. Play one card each
+      round — higher value wins the trick, and the right suit strikes harder.
+      Reduce Rook to 0 life before yours runs out.</p>
+      <div class="rules">
+        <p><b>Flame ◆</b> beats <b>Thorn ▲</b> · <b>Thorn ▲</b> beats <b>Tide ●</b> ·
+        <b>Tide ●</b> beats <b>Flame ◆</b> · <b>Star ★</b> is wild, no bonus either way.</p>
+        <p>Winning a trick deals damage equal to the value gap, +2 for a suit advantage.
+        Special cards: <b>Foxfire</b> (Star 10), <b>Mend</b> (heal 6), <b>Aegis</b> (block all
+        damage), <b>Trickster</b> (copies the foe's value, wins ties).</p>
+      </div>
+      <button id="start-button" type="button">Take your seat</button>
+      <p class="keys-note">Mouse or keyboard: 1–5 select a card, Enter plays it.</p>
+    </div>
+  </div>
+
+  <div id="end-screen" class="overlay hidden">
+    <div class="panel">
+      <h1 id="end-title">Victory</h1>
+      <p id="end-text"></p>
+      <p id="end-stats"></p>
+      <button id="again-button" type="button">Play again</button>
+    </div>
+  </div>
+
+  <div id="help-screen" class="overlay hidden">
+    <div class="panel">
+      <h1>How to play</h1>
+      <p>Each round you and Rook each play one card from your hands, face down, then
+      reveal them together.</p>
+      <p>The higher value wins the trick. The winner deals damage equal to the gap
+      between the two values, plus 2 when the winner's suit beats the loser's suit.</p>
+      <p>Suit cycle: Flame beats Thorn, Thorn beats Tide, Tide beats Flame. Star is
+      wild and never gives or takes a suit bonus.</p>
+      <p>Special cards change the duel: Foxfire is a mighty Star 10, Mend heals you
+      for 6, Aegis blocks every point of damage that round, and the Trickster copies
+      your foe's value and wins ties.</p>
+      <p>You draw one card each round. First to 0 life loses. If both decks run dry,
+      the higher life total wins.</p>
+      <button id="help-close" type="button">Back to the table</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
